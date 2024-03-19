@@ -1,3 +1,17 @@
+Код подключения к s3 лежит в SiteController
+Пример получения ссылки в testMinio.php
+Чтобы настроить минио:
+В директории basic/ юзнуть: composer require aws/aws-sdk-php
+Затем: cd /
+И: wget https://dl.min.io/server/minio/release/linux-amd64/minio chmod +x minio ./minio server /mnt/data
+Далее: sudo MINIO_ROOT_USER=minioadmin MINIO_ROOT_PASSWORD=minioadmin ./minio server /mnt/data --console-address ":9001"
+http://127.0.0.1:9001/
+пароль и логин minioadmin
+перейти в administrator/bucket и создать ведро с именем testbucket
+
+
+
+
 <p align="center">
     <a href="https://github.com/yiisoft" target="_blank">
         <img src="https://avatars0.githubusercontent.com/u/993323" height="100px">
