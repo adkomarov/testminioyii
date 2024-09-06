@@ -1,4 +1,6 @@
 <?php
+use PHPUnit\Framework\Assert;
+
 
 
 /**
@@ -19,8 +21,35 @@
 class AcceptanceTester extends \Codeception\Actor
 {
     use _generated\AcceptanceTesterActions;
+    use \Codeception\Util\Shared\Asserts;
 
-   /**
+    /**
     * Define custom actions here
     */
+
+    public function scrollToElementIfNotVisible($selector, $maxAttempts = 10)
+    {
+        $attempt = 0;
+
+        while (!$this->isElementVisible($selector) && $attempt < $maxAttempts) {
+            $this->scrollTo($selector);
+            $attempt++;
+        }
+    }
+
+    public function isElementVisible($selector)
+    {
+        return $this->executeJS("return document.querySelector('$selector').getBoundingClientRect().top < window.innerHeight;");
+    }
+
+    public function isElementNotVisible($selector)
+    {
+        return $this->executeJS("return document.querySelector('$selector').getBoundingClientRect().top < window.innerHeight;");
+    }
+
+    //Asserts::assertEquals
+
+    
+
+
 }

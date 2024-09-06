@@ -1,0 +1,15 @@
+#actor: AcceptanceTester
+#modules:
+#    enabled:
+#        - \Helper\Acceptance
+actor: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver:
+            url: http://localhost:8080
+            browser: chrome
+            host: 127.0.0.1
+            port: 9515
+            restart: true
+        - Yii2:
+            part: [orm, fixtures, email]
